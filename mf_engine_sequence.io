@@ -1,7 +1,7 @@
 #include <FastLED.h>
 
 #define NUM_LEDS 110
-#define LED_PIN   6
+#define LED_PIN   5  // FIXME: Original used pin 6
 
 CRGB leds[NUM_LEDS];
 uint8_t colorIndex[NUM_LEDS];
@@ -17,8 +17,11 @@ CRGBPalette16 mfengineOn = mfengineOn_gp;
 
 void setup() {
   FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
-  FastLED.setBrightness(50);
+  FastLED.setBrightness(10);  // FIXME: Original was 50
   engineOff();
+  for (int i = 0; i < NUM_LEDS; i++) {
+    colorIndex[i] = i;
+  }  
 }
 
 
@@ -43,10 +46,10 @@ void engineStart() {
     leds[82-1-i] = CRGB(0,212,255);
     FastLED.show();
     delay(125);
-    leds[27+i] = CRGB(255,2555,255);
-    leds[27-1-i] = CRGB(255,2555,255);
-    leds[82+i] = CRGB(255,2555,255);
-    leds[82-1-i] = CRGB(255,2555,255);
+    leds[27+i] = CRGB(255,255,255);
+    leds[27-1-i] = CRGB(255,255,255);
+    leds[82+i] = CRGB(255,255,255);
+    leds[82-1-i] = CRGB(255,255,255);
   }
 }
 
