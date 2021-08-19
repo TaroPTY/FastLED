@@ -2,7 +2,7 @@
 
 #define NUM_LEDS 110
 #define LED_PIN   5  // FIXME: Original used pin 6
-#define FRAMES_PER_SECOND 100
+#define FRAMES_PER_SECOND 30
  
 CRGB leds[NUM_LEDS];
 uint8_t colorIndex[NUM_LEDS];
@@ -59,7 +59,7 @@ void engineStart() {
 }
 
 void engineOn() {
-  EVERY_N_MILLISECONDS(25){
+  EVERY_N_MILLISECONDS(150){
     for (int i = 0; i < NUM_LEDS; i++) {
       colorIndex[i]++;
     }
